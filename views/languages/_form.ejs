@@ -1,0 +1,30 @@
+<!--
+  Step 1: The form must be sharable between the new and edit views.
+-->
+<form action="<%= (typeof actionPath === 'undefined') ? '/languages' : actionPath %>", method="POST">
+  <% if (typeof actionPath !== 'undefined') { %>
+    <input type="hidden" name="id" value="<%= formData.id %>">
+  <% } %>
+
+  <div class="form-group">
+    <label for="language">Language to learn</label>
+    <input type="text" name="language" class="form-control" value="<%= formData.language %>">
+  </div>
+
+  <div class="form-group">
+    <label for="hoursPerWeek">Number of Hours/Week</label>
+    <input type="number" name="hoursPerWeek" class="form-control" value="<%= formData.hoursPerWeek %>">
+  </div>
+
+  <div class="form-group">
+    <label for="level">Level of Learning</label>
+    <select name="level" class="form-control">
+      <option value="BASIC">Basic</option>
+      <option <%= formData.level && formData.level === 'FLUENT' ? 'selected' : null %> value="FLUENT">Fluent</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <button class="btn btn-dark">Submit</button>
+  </div>
+</form>
